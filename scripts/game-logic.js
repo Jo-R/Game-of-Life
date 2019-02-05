@@ -6,12 +6,8 @@ class GameLogic {
         this.size = size;
     }
 
-    logger() {
-        console.log(this.currentGrid);
-    }
-
     //since representing by 1 and 0 can just sum the neightbour cells to work out how many are alive
-    //shamelessley stolen from Lea Verou pluralsight course!
+    //shamelessley stolen from Lea Verou pluralsight course because using reduce here is nifty!
     aliveNeighbours(array, x, y) {
 		var prevRow = array[y-1] || [];
 		var nextRow = array[y+1] || [];
@@ -54,9 +50,8 @@ class GameLogic {
         }
         //now set the updated grid to current
         this.currentGrid = updatedGrid;
-        this.logger();
+        return this.currentGrid;
     }
-
 
 }
 

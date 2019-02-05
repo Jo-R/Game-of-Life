@@ -30,3 +30,8 @@ html {
       color: palevioletred;
       text-align: center;
   }
+
+  #grid {
+    margin: auto 0;
+    width: 100%;
+  }
