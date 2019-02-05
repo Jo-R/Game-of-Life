@@ -38,6 +38,7 @@ html {
       color: palevioletred;
   }
 
+
   #grid {
     border-collapse: collapse;
   }
@@ -51,14 +52,14 @@ html {
       -moz-appearance: none;
       appearance: none;
       display: block;
-      width: 20px;
-      height: 20px;
+      width: 0.75em;
+      height: 0.75em;
       border: 0;
       background: white;
     }
     
       #grid input[type="checkbox"]:checked {
-        box-shadow: 0 0 0 99px pink inset;
+        background: pink;
       }
 
 #control-panel {

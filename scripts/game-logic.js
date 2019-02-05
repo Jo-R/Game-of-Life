@@ -31,9 +31,9 @@ class GameLogic {
             //col
             for (var x = 0; x < this.size; x++) {
                 //get t/f for if cell alive
-                let isAlive = !!+this.currentGrid[y][x];
+                const isAlive = !!+this.currentGrid[y][x];
                 //get alive neighbour count
-                let neighbourCount = this.aliveNeighbours(this.currentGrid, x, y);
+                const neighbourCount = this.aliveNeighbours(this.currentGrid, x, y);
                  //Any live cell with fewer than two live neighbors dies, as if by underpopulation.
                  //Any live cell with two or three live neighbors lives on to the next generation.
                  //Any live cell with more than three live neighbors dies, as if by overpopulation.
