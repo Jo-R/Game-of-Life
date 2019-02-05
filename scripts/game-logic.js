@@ -21,7 +21,7 @@ class GameLogic {
 		}, 0);
     }
     
-    //takes currentGrid and outpus a new grid based on the rules
+    //takes currentGrid and outputs a new grid based on the rules
     next() {
         //make deep copy of current grid
         let updatedGrid = this.currentGrid.map(el => el.slice());

@@ -1,2 +1,5 @@
 - use css grid instead of table?
 - make it so can have it wrap off the edges
+- customisable grid size?
+- be able to move one step at a time (either from the off or when one is running)
+- keyboard naviagtion

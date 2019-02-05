@@ -7,27 +7,31 @@ class UiLogic {
 		this.gridElement = gridElement;
 		this.checkboxes = [];
 		this.createBoard();
+		//get button elements since are referenced a fair bit
+		this.startBtn = document.getElementById('start');
+		this.stopBtn = document.getElementById('stop');
+		this.clearBtn = document.getElementById('clear');
+		//bind event methods and attach to buttons
 		this.startGame = this.startGame.bind(this);
 		this.stopGame = this.stopGame.bind(this);
-		this.getGrid = this.getGrid.bind(this);
 		this.createBoard = this.createBoard.bind(this);
-		this.next = this.next.bind(this);
-		document.getElementById('start').addEventListener('click', this.startGame);
-		document.getElementById('stop').addEventListener('click', this.stopGame);
-		document.getElementById('stop').disabled = true;
-		document.getElementById('clear').addEventListener('click', this.createBoard);
-
+		this.next = this.next.bind(this); //used in timer so needs binding
+		this.startBtn.addEventListener('click', this.startGame);
+		this.stopBtn.addEventListener('click', this.stopGame);
+		this.stopBtn.disabled = true;
+		this.clearBtn.addEventListener('click', this.createBoard);
 	}
 
     createBoard() {
+		//using fragment minmises actual DOM interaction
 		let fragment = document.createDocumentFragment();
 		this.gridElement.innerHTML = '';
-		
-		for (var y=0; y<this.boardSize; y++) {
+		//create checkboxes for size of board
+		for (var y = 0; y < this.boardSize; y++) {
 			var row = document.createElement('tr');
 			this.checkboxes[y] = [];
 			
-			for (var x=0; x<this.boardSize; x++) {
+			for (var x = 0; x < this.boardSize; x++) {
 				var cell = document.createElement('td');
 				var checkbox = document.createElement('input');
 				checkbox.type = 'checkbox';
@@ -37,12 +41,9 @@ class UiLogic {
 				cell.appendChild(checkbox);
 				row.appendChild(cell);
 			}
-			
 			fragment.appendChild(row);
         }
-
         this.gridElement.appendChild(fragment);
-
 	}
 	
 	getGrid() {
@@ -54,31 +55,29 @@ class UiLogic {
 	}
 
 	startGame() {
-		let startGrid = this.getGrid();
-		this.game = new GameLogic(startGrid, this.boardSize);
+		this.game = new GameLogic(this.getGrid(), this.boardSize);
 		this.timer = setInterval(this.next, 750);
-		document.getElementById('start').disabled = true;
-		document.getElementById('clear').disabled = true;
-		document.getElementById('stop').disabled = false;
+		this.startBtn.disabled = true;
+		this.clearBtn.disabled = true;
+		this.stopBtn.disabled = false;
 	}
 
 	stopGame() {
 		clearInterval(this.timer);
-		document.getElementById('start').disabled = false;
-		document.getElementById('clear').disabled = false;
-		document.getElementById('stop').disabled = true;
+		this.startBtn.disabled = false;
+		this.clearBtn.disabled = false;
+		this.stopBtn.disabled = true;
 	}
 
 	next() {
 		var newBoard = this.game.next();
-		//update checkboxes with game.currentGrid
-		for (var y=0; y<this.boardSize; y++) {
-			for (var x=0; x<this.boardSize; x++) {
+		//update UI with new position
+		for (var y = 0; y < this.boardSize; y++) {
+			for (var x = 0; x < this.boardSize; x++) {
 				this.checkboxes[y][x].checked = !!newBoard[y][x];
 			}
 		}
 	}
-		
 }
 
-export {UiLogic};
+export {UiLogic};	
