@@ -70,4 +70,10 @@ html {
     color: blue;
     padding: 0.5em 0.75em;
     margin: 0.75em;
+    cursor: pointer;
+  }
+
+  #control-panel button:disabled {
+    color: white;
+    cursor: not-allowed;
   }

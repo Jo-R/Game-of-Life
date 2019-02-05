@@ -10,10 +10,12 @@ class UiLogic {
 		this.startGame = this.startGame.bind(this);
 		this.stopGame = this.stopGame.bind(this);
 		this.getGrid = this.getGrid.bind(this);
+		this.createBoard = this.createBoard.bind(this);
 		this.next = this.next.bind(this);
 		document.getElementById('start').addEventListener('click', this.startGame);
 		document.getElementById('stop').addEventListener('click', this.stopGame);
 		document.getElementById('stop').disabled = true;
+		document.getElementById('clear').addEventListener('click', this.createBoard);
 
 	}
 
@@ -56,12 +58,14 @@ class UiLogic {
 		this.game = new GameLogic(startGrid, this.boardSize);
 		this.timer = setInterval(this.next, 750);
 		document.getElementById('start').disabled = true;
+		document.getElementById('clear').disabled = true;
 		document.getElementById('stop').disabled = false;
 	}
 
 	stopGame() {
 		clearInterval(this.timer);
 		document.getElementById('start').disabled = false;
+		document.getElementById('clear').disabled = false;
 		document.getElementById('stop').disabled = true;
 	}
 
