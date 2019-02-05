@@ -8,7 +8,12 @@ class UiLogic {
 		this.checkboxes = [];
 		this.createBoard();
 		this.startGame = this.startGame.bind(this);
+		this.stopGame = this.stopGame.bind(this);
+		this.getGrid = this.getGrid.bind(this);
+		this.next = this.next.bind(this);
 		document.getElementById('start').addEventListener('click', this.startGame);
+		document.getElementById('stop').addEventListener('click', this.stopGame);
+		document.getElementById('stop').disabled = true;
 
 	}
 
@@ -38,15 +43,30 @@ class UiLogic {
 
 	}
 	
-	startGame() {
-		//map over this.checkboxes and get grid of 1s and 0s
-		let startGrid = this.checkboxes.map(function (row) {
+	getGrid() {
+		return this.checkboxes.map(function (row) {
 			return row.map(function (checkbox) {
 				return +checkbox.checked;
 			});
 		});
-		const game = new GameLogic(startGrid, this.boardSize);
-		var newBoard = game.next();
+	}
+
+	startGame() {
+		let startGrid = this.getGrid();
+		this.game = new GameLogic(startGrid, this.boardSize);
+		this.timer = setInterval(this.next, 750);
+		document.getElementById('start').disabled = true;
+		document.getElementById('stop').disabled = false;
+	}
+
+	stopGame() {
+		clearInterval(this.timer);
+		document.getElementById('start').disabled = false;
+		document.getElementById('stop').disabled = true;
+	}
+
+	next() {
+		var newBoard = this.game.next();
 		//update checkboxes with game.currentGrid
 		for (var y=0; y<this.boardSize; y++) {
 			for (var x=0; x<this.boardSize; x++) {
