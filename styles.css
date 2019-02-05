@@ -1,4 +1,4 @@
-/* reset https://alligator.io/css/minimal-css-reset/*/
+/**reset https://alligator.io/css/minimal-css-reset/ */
 html {
     box-sizing: border-box;
     font-size: 16px;
@@ -25,13 +25,49 @@ html {
 
   /* Main styles*/
 
+  body {
+    margin: 1em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
   h1 {
       font-weight: bold;
       color: palevioletred;
-      text-align: center;
   }
 
   #grid {
-    margin: auto 0;
-    width: 100%;
+    border-collapse: collapse;
+  }
+  
+    #grid td {
+      border: 1px solid gray;
+    }
+    
+    #grid input[type="checkbox"] {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      display: block;
+      width: 20px;
+      height: 20px;
+      border: 0;
+      background: white;
+    }
+    
+      #grid input[type="checkbox"]:checked {
+        box-shadow: 0 0 0 99px pink inset;
+      }
+
+#control-panel {
+  margin: 1em;
+}
+
+  #control-panel button {
+    border-radius: 1em;
+    color: blue;
+    padding: 0.5em 0.75em;
+    margin: 0.75em;
   }
