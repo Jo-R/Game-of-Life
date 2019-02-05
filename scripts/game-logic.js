@@ -23,11 +23,13 @@ class GameLogic {
     
     //takes currentGrid and outputs a new grid based on the rules
     next() {
-        //make deep copy of current grid
+        //make deep copy of current grid and the updated version is what is updated
         let updatedGrid = this.currentGrid.map(el => el.slice());
          //do the checks on currentGrid and update the new one
-        for (var y = 0; y < this.size-1; y++) {
-            for (var x = 0; x < this.size-1; x++) {
+         //row
+        for (var y = 0; y < this.size; y++) {
+            //col
+            for (var x = 0; x < this.size; x++) {
                 //get t/f for if cell alive
                 let isAlive = !!+this.currentGrid[y][x];
                 //get alive neighbour count
@@ -42,7 +44,7 @@ class GameLogic {
                  }
                  //Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
                  if (!isAlive) {
-                     if (neighbourCount === 3) {
+                     if (neighbourCount == 3) {
                         updatedGrid[y][x] = 1;
                      }
                  }

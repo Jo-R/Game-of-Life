@@ -71,7 +71,7 @@ class UiLogic {
 
 	next() {
 		var newBoard = this.game.next();
-		//update UI with new position
+		//update UI with new
 		for (var y = 0; y < this.boardSize; y++) {
 			for (var x = 0; x < this.boardSize; x++) {
 				this.checkboxes[y][x].checked = !!newBoard[y][x];

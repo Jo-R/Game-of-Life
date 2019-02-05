@@ -1,4 +1,3 @@
-- not sure its working out edge cells right - see put one in two top corners (top right doesn't die)
 - use css grid instead of table?
 - make it so can have it wrap off the edges
 - customisable grid size?
