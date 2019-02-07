@@ -1,32 +1,23 @@
-/**reset https://alligator.io/css/minimal-css-reset/ */
-html {
-    box-sizing: border-box;
-    font-size: 16px;
-  }
   
   *, *:before, *:after {
     box-sizing: inherit;
+  }
+
+  html {
+    font-size: 62.5%;
   }
   
   body, h1, h2, h3, h4, h5, h6, p, ol, ul {
     margin: 0;
     padding: 0;
     font-weight: normal;
-  }
-  
-  ol, ul {
-    list-style: none;
-  }
-  
-  img {
-    max-width: 100%;
-    height: auto;
+    box-sizing: border-box;
   }
 
   /* Main styles*/
 
   body {
-    margin: 1em;
+    margin: 1rem;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -36,8 +27,12 @@ html {
   h1 {
       font-weight: bold;
       color: palevioletred;
+      font-size: 3rem;
   }
 
+  p, a {
+    font-size: 1.5rem;
+  }
 
   #grid {
     border-collapse: collapse;
@@ -52,40 +47,61 @@ html {
       -moz-appearance: none;
       appearance: none;
       display: block;
-      width: 0.75em;
-      height: 0.75em;
+      width: 1.5rem;
+      height: 1.5rem;
       border: 0;
-      background: white;
     }
     
-      #grid input[type="checkbox"]:checked {
-        background: pink;
-      }
+    #grid input[type="checkbox"]:checked {
+      background: pink;
+      animation: fillBox .3s linear;
+    }
+
+@keyframes fillBox {
+  0% {
+    opacity: 0.2;
+    transform: scale(0.2)
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(0.6)
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
 
 #control-panel {
-  margin: 1em;
+  margin: 1rem;
 }
 
   #control-panel button {
-    border-radius: 1em;
-    color: blue;
-    padding: 0.5em 0.75em;
-    margin: 0.75em;
+    border-radius: 1rem;
+    border: palevioletred 1px solid;
+    color: #513438;
+    background-color: pink;
+    font-weight: 500;
+    font-size: 1.5rem;
+    padding: 0.75rem 1rem;
+    margin: 0.75rem;
     cursor: pointer;
     transition: all .2s;
   }
 
   #control-panel button:hover {
-    transform: translateY(-0.2em);
-    box-shadow: 0 0.5em 1.2em rgba(0,0,0,.2);
+    transform: translateY(-0.2rem);
+    box-shadow: 0 0.2rem 1.2rem rgba(0,0,0,.3);
   }
 
   #control-panel button:active {
-    transform: translateY(-0.1em);
-    box-shadow: 0 0.3em 0.8em rgba(0,0,0,.2); /* loase a bit of shadow and blur on depressing button */
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.1rem 0.8rem rgba(0,0,0,.3); /* loase a bit of shadow and blur on depressing button */
   }
 
   #control-panel button:disabled {
     color: white;
     cursor: not-allowed;
+    opacity: .4;
   }
