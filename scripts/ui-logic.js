@@ -16,11 +16,12 @@ class UiLogic {
 		this.startGame = this.startGame.bind(this);
 		this.stopGame = this.stopGame.bind(this);
 		this.createBoard = this.createBoard.bind(this);
+		this.clearBoard = this.clearBoard.bind(this);
 		this.next = this.next.bind(this); //used in timer so needs binding
 		this.startBtn.addEventListener('click', this.startGame);
 		this.stopBtn.addEventListener('click', this.stopGame);
 		this.stopBtn.disabled = true;
-		this.clearBtn.addEventListener('click', this.createBoard);
+		this.clearBtn.addEventListener('click', this.clearBoard);
 		this.resetBtn.addEventListener('click', this.createBoard);
 		this.resetBtn.disabled = true;
 	}
@@ -50,6 +51,11 @@ class UiLogic {
 			fragment.appendChild(row);
         }
         this.gridElement.appendChild(fragment);
+	}
+
+	clearBoard() {
+		this.initialState = undefined;
+		this.createBoard();
 	}
 	
 	getGrid() {
