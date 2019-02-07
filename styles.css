@@ -72,6 +72,17 @@ html {
     padding: 0.5em 0.75em;
     margin: 0.75em;
     cursor: pointer;
+    transition: all .2s;
+  }
+
+  #control-panel button:hover {
+    transform: translateY(-0.2em);
+    box-shadow: 0 0.5em 1.2em rgba(0,0,0,.2);
+  }
+
+  #control-panel button:active {
+    transform: translateY(-0.1em);
+    box-shadow: 0 0.3em 0.8em rgba(0,0,0,.2); /* loase a bit of shadow and blur on depressing button */
   }
 
   #control-panel button:disabled {

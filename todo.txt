@@ -4,4 +4,6 @@
 - use css grid instead of table?
 - make it so can have it wrap off the edges
 - customisable grid size?
+- show generation number
+- transitions/animations?
 
