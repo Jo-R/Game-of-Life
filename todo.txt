@@ -1,4 +1,3 @@
-- be able to reset to how I started (copy intial state and then check in create board if !undefined and copy it if its there??)
 - be able to move one step at a time (either from the off or when one is running)
 - keyboard naviagtion
 - use css grid instead of table?

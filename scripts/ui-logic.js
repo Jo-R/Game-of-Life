@@ -11,6 +11,7 @@ class UiLogic {
 		this.startBtn = document.getElementById('start');
 		this.stopBtn = document.getElementById('stop');
 		this.clearBtn = document.getElementById('clear');
+		this.resetBtn = document.getElementById('reset');
 		//bind event methods and attach to buttons
 		this.startGame = this.startGame.bind(this);
 		this.stopGame = this.stopGame.bind(this);
@@ -20,6 +21,8 @@ class UiLogic {
 		this.stopBtn.addEventListener('click', this.stopGame);
 		this.stopBtn.disabled = true;
 		this.clearBtn.addEventListener('click', this.createBoard);
+		this.resetBtn.addEventListener('click', this.createBoard);
+		this.resetBtn.disabled = true;
 	}
 
     createBoard() {
@@ -37,6 +40,9 @@ class UiLogic {
 				checkbox.type = 'checkbox';
 				this.checkboxes[y][x] = checkbox;
 				checkbox.coords = [y, x];
+				if (this.initialState != undefined && this.initialState[y][x]) {
+					this.checkboxes[y][x].checked = true;
+				}
 				
 				cell.appendChild(checkbox);
 				row.appendChild(cell);
@@ -55,7 +61,8 @@ class UiLogic {
 	}
 
 	startGame() {
-		this.game = new GameLogic(this.getGrid(), this.boardSize);
+		this.initialState = this.getGrid();
+		this.game = new GameLogic(this.initialState, this.boardSize);
 		this.timer = setInterval(this.next, 750);
 		this.startBtn.disabled = true;
 		this.clearBtn.disabled = true;
@@ -67,6 +74,7 @@ class UiLogic {
 		this.startBtn.disabled = false;
 		this.clearBtn.disabled = false;
 		this.stopBtn.disabled = true;
+		this.resetBtn.disabled = false;
 	}
 
 	next() {
