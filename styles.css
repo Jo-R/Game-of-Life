@@ -28,6 +28,7 @@
       font-weight: bold;
       color: palevioletred;
       font-size: 3rem;
+      display: inline-block;
       background-image: linear-gradient(to right bottom, #7a5a5e, palevioletred 55%, pink);
       -webkit-background-clip: text;
       background-clip: text;
